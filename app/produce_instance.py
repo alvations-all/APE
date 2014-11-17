@@ -53,14 +53,20 @@ num_humans = 24
 
 humans_hits = defaultdict(list)
 
-for hit, human in zip(hits, cycle(range(num_humans))):
-    humans_hits[human].append(hit)
 
-'''
+for human in range(num_humans):
+    for hit in hits[:30]:
+        humans_hits[human].append(hit)
+    
+for hit, human in zip(hits[30:], cycle(range(num_humans))):
+    humans_hits[human].append(hit)
+    
+
+
 for human in humans_hits:
     for hit in humans_hits[human]:
         print source_sents[int(hit.srcid)].strip()
         print hit
         print
+        break
     break
-''' 
